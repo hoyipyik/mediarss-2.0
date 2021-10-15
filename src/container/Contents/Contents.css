@@ -1,0 +1,17 @@
+.Contents{
+    position: absolute;
+    height: 100vh;
+    width: 80%;
+    /* background-color: bisque; */
+}
+
+.Contents section.top-bar{
+    background-color:rgb(175, 208, 236) ;
+    height: 5%;
+}
+
+.Contents section.main-contents{
+    /* overflow: scroll; */
+    height: 95%;
+    /* background-color: bisque; */
+}

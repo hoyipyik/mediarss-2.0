@@ -11,10 +11,10 @@ class App extends Component {
     return (
       <div className='App'>
         <section className='container'>
-          <div className='item'>
+          <div className='item1'>
             <SideBar />
           </div>
-          <div className='item'>
+          <div className='item2'>
             <Contents />
           </div>
         </section>

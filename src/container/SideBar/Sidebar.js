@@ -6,22 +6,21 @@ import ChannelList from "../../components/ChannelList/ChannelList"
 
 import "./Sidebar.css"
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
     render() {
         return (
             <div className='Sidebar'>
-                <div className='item'>
+                <h1>Media Rss</h1>
+                <div className='side-menu'>
                     <Menu/>
                 </div>
-                <div className='item'>
-                    <div className='sub-item'>
-                        <Playlist/>
-                    </div>
-                    <div className='sub-item'>
-                        <ChannelList/>
-                    </div>
+                <div className='side-list'>
+                    <Playlist/>
+                    {/* <ChannelList/> */}
                 </div>
             </div>
         )
     }
 }
+
+export default Sidebar

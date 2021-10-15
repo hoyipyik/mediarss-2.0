@@ -1,0 +1,20 @@
+.Sidebar{
+    /* background-color: azure; */
+    /* height: 100vh; */
+    position: absolute;
+    width: 20%;
+    height: 100vh;
+    border-right: black solid;
+    /* background-color:; */
+}
+
+.Sidebar h1{
+    display: inline-block; 
+}
+
+.Sidebar div.side-menu{
+    height: 26%;
+    width: 100%;
+    border-bottom: solid black;
+    /* background-color: antiquewhite; */
+}

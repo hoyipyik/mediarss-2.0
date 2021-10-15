@@ -9,8 +9,13 @@ export default class Contents extends Component {
     render() {
         return (
             <div className='Contents'>
-                <Home/>
-                <Search/>
+                <section className='top-bar'>
+                    <h3>This is topbar</h3>
+                </section>
+                <section className='main-contents'>
+                    <Home/>
+                    {/* <Search/> */}
+                </section>
             </div>
         )
     }
