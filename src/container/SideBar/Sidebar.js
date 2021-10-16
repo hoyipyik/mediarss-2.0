@@ -16,9 +16,10 @@ class Sidebar extends Component {
                 </div>
                 <div className='side-list'>
                     <Playlist/>
-                    {/* <ChannelList/> */}
-                </div>
+                    {/* <ChannelList/> */} 
+                </div> 
             </div>
+            
         )
     }
 }
