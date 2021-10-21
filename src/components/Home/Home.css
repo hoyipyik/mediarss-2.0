@@ -1,5 +1,6 @@
 .Home{
     height: 100%;
     overflow: scroll;
+    overflow-x: hidden; 
     /* background-color: rgb(155, 105, 39); */
 }

@@ -1,20 +1,32 @@
 .Sidebar{
     /* background-color: azure; */
     /* height: 100vh; */
-    position: absolute;
-    width: 20%;
     height: 100vh;
     border-right: black solid;
+    display: flex;
+    flex-direction: column;
+    /* color: white; */
+    /* background-color: #040404; */
     /* background-color:; */
 }
 
 .Sidebar h1{
-    display: inline-block; 
+    display: block; 
+    margin: 3% 0;
+    padding: 3% 0;
+    text-align: center;
 }
 
+
 .Sidebar div.side-menu{
-    height: 26%;
-    width: 100%;
+    /* height: 26%; */
+    /* width: 100%; */
+    flex: 1;
     border-bottom: solid black;
     /* background-color: antiquewhite; */
+}
+
+.Sidebar div.side-list{
+    flex: 5;
+    /* background-color: black; */
 }

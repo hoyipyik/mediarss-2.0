@@ -3,6 +3,7 @@
     position: relative;
     /* white-space: nowrap; */
     height: 100vh;
+    display: flex;
     vertical-align: top;
     background-color: aliceblue;
     /* background-color: antiquewhite; */
@@ -10,7 +11,7 @@
 
 .App div.item1{
     display: inline-block;
-    width: 20%;
+    flex: 1;
     height: 100vh;
     /* background-color:blanchedalmond; */
     /* border: solid black 1em; */
@@ -19,7 +20,7 @@
 
 .App div.item2{
     display: inline-block;
-    width: 80%;
+    flex: 4;
     height: 100vh;
     /* background-color:blanchedalmond ; */
     /* overflow: scroll; */
