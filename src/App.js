@@ -11,6 +11,7 @@ import "./App.css"
 class App extends Component {
   state= {
     addPageFlag: false,
+    channelItemPageFlag: false,
   }
 
 
@@ -18,6 +19,13 @@ class App extends Component {
     const {addPageFlag} = this.state
     this.setState({
       addPageFlag: !addPageFlag
+    })
+  }
+
+  channelItemPageHandler = () =>{
+    const {channelItemPageFlag} = this.state
+    this.setState({
+      channelItemPageFlag: !channelItemPageFlag
     })
   }
 
@@ -29,8 +37,8 @@ class App extends Component {
         <section className='add-page'>
           <Backdrop addButtonHandler={this.addButtonHandler}/>
           <AddPage/>
-          
         </section>:null}
+
         <section className='container'>
           <div className='item1'>
             <SideBar />
@@ -43,10 +51,6 @@ class App extends Component {
         <section className='add-button'>
           <AddButton addButtonHandler={this.addButtonHandler}/>
         </section>
-
-        
-
-        
       </div>
     )
   }

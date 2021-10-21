@@ -11,6 +11,7 @@ export default class AddPage extends Component {
                     <input placeholder="Paste the link of channel's main page"/>
                     <button>Subscribe</button>
                 </div>
+        
             </div>
         )
     }
