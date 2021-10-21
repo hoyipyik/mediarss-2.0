@@ -2,7 +2,7 @@
     /* background-color: azure; */
     /* height: 100vh; */
     height: 100vh;
-    border-right: black solid;
+    border-right: rgba(43, 37, 37, 0.692) solid;
     display: flex;
     flex-direction: column;
     /* color: white; */
@@ -21,8 +21,8 @@
 .Sidebar div.side-menu{
     /* height: 26%; */
     /* width: 100%; */
-    flex: 2;
-    border-bottom: solid black;
+    flex: 1 85px;
+    border-bottom: solid rgba(0, 0, 0, 0.342);
     /* background-color: antiquewhite; */
 }
 

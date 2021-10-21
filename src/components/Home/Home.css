@@ -4,3 +4,48 @@
     overflow-x: hidden; 
     /* background-color: rgb(155, 105, 39); */
 }
+
+/* .Home::-webkit-scrollbar {
+    display: none;
+  } */
+
+.Home .container{
+    margin: 1.5% 3%;
+    /* background-color: black; */
+}
+
+.Home h1{
+    font-size: 1.6em;
+    padding: 1% 0 2%;
+    /* background-color: aqua; */
+}
+
+.Home h4{
+    padding: 1%;
+}
+
+.Home section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+}
+
+.Home .channel-item{
+    /* flex: 1 100px; */
+    margin: 2% 3%;
+    padding: 1% 1%;
+    /* align-items: center; */
+    
+}
+
+.Home figcaption{
+    text-align: left;
+}
+
+.Home img{
+    width: 150px;
+    height: 150px;
+}
+

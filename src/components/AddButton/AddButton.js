@@ -5,7 +5,7 @@ import "./AddButton.css"
 
 const AddButton = (props) => {
     return (
-        <div className='AddButton'>
+        <div className='AddButton' onClick={props.addButtonHandler}>
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 width="48" height="48"
                 viewBox="0 0 171 171">

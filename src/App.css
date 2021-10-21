@@ -31,3 +31,17 @@
     bottom: 9%;
     right: 5%;
 }
+
+.App section.add-button:hover{
+    zoom: 105%;
+    cursor: pointer;
+   
+}
+
+.App section.add-page{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    /* background-color: black; */
+}

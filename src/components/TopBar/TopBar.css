@@ -2,10 +2,12 @@
     background-color:rgb(47, 81, 110) ;
     color: aliceblue;
     height: 100%;
+    
 }
 
 .TopBar div.container{
     margin: 0.5% 1%;
+    /* width: 100%; */
 }
 
 /* .TopBar div.container span{
@@ -13,11 +15,14 @@
 } */
 
 .TopBar #user-icon{
-    position: relative;
-    left: 90%;
+    position: absolute;
+    right: 4%;
+    /* margin-left: 90%; */
 }
 
 .TopBar #setting-icon{
-    position: relative;
-    left: 91%;
+    position: absolute;
+    right: 1%;
+    /* top: 5px; */
+    /* display: inline-block; */
 }
