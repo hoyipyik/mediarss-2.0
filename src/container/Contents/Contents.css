@@ -6,12 +6,11 @@
 }
 
 .Contents section.top-bar{
-    background-color:rgb(47, 81, 110) ;
-    flex: 1;
-    color: white;
+    flex: 1 10px;
+    /* color: white; */
 }
 
 .Contents section.main-contents{
-    flex: 19;
+    flex: 18;
     /* background-color: bisque; */
 }

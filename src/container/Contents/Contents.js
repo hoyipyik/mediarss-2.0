@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Home from "../../components/Home/Home"
 import Search from "../../components/Search/Search"
+import TopBar from '../../components/TopBar/TopBar'
 
 import "./Contents.css"
 
@@ -10,7 +11,7 @@ export default class Contents extends Component {
         return (
             <div className='Contents'>
                 <section className='top-bar'>
-                    <h3>This is topbar</h3>
+                    <TopBar/>
                 </section>
                 <section className='main-contents'>
                     <Home/>

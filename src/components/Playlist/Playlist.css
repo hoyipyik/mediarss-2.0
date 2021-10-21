@@ -1,0 +1,15 @@
+.Playlist{
+    overflow-y: scroll;
+    /* display: flex;
+    flex-direction: column; */
+    height: 100%;
+    flex: 10px;
+    margin: 0 2%;
+
+    /* background-color: antiquewhite; */
+}
+
+.Playlist div.playlist-item{
+    margin: 4.5% 2%;
+    text-align: left;
+}

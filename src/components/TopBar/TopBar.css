@@ -1,0 +1,23 @@
+.TopBar{
+    background-color:rgb(47, 81, 110) ;
+    color: aliceblue;
+    height: 100%;
+}
+
+.TopBar div.container{
+    margin: 0.5% 1%;
+}
+
+/* .TopBar div.container span{
+    margin: 0 10px;
+} */
+
+.TopBar #user-icon{
+    position: relative;
+    left: 90%;
+}
+
+.TopBar #setting-icon{
+    position: relative;
+    left: 91%;
+}

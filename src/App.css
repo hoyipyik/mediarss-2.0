@@ -11,7 +11,7 @@
 
 .App div.item1{
     display: inline-block;
-    flex: 1;
+    flex: 1 130px;
     height: 100vh;
     /* background-color:blanchedalmond; */
     /* border: solid black 1em; */
@@ -20,7 +20,7 @@
 
 .App div.item2{
     display: inline-block;
-    flex: 4;
+    flex: 9;
     height: 100vh;
     /* background-color:blanchedalmond ; */
     /* overflow: scroll; */
