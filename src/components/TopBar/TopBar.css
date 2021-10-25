@@ -26,3 +26,8 @@
     /* top: 5px; */
     /* display: inline-block; */
 }
+
+.TopBar span:hover{
+    zoom: 90%;
+    cursor: pointer;
+}

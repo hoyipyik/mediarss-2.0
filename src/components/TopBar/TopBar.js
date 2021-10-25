@@ -10,7 +10,7 @@ const TopBar = (props) => {
     return (
         <div className='TopBar'>
             <div className='container'>
-                <span id='back-icon' onClick={props.channelItemPageFlagHandler }><ArrowBackIosIcon/></span>
+                <span id='back-icon' onClick={props.channelItemPageFlagHandler}><ArrowBackIosIcon/></span>
                 <span id='user-icon'><AccountCircleIcon/></span>
                 <span id="setting-icon"><SettingsIcon/></span>
             </div>

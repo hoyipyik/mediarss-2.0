@@ -10,7 +10,7 @@ import "./Menu.css"
 const  Menu = (props) =>{
     return (
         <div className='Menu'>
-            <div className='menu-item'>
+            <div className='menu-item' onClick={props.HomeHandler}>
                 <span><SubscriptionsIcon/></span>
                 <span className='label'>Channels</span>
             </div>

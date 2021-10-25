@@ -11,7 +11,7 @@ import "./App.css"
 class App extends Component {
   state= {
     addPageFlag: false,
-    channelItemPageFlag: false,
+    channelItemPageFlag: true,
   }
 
 
@@ -22,15 +22,16 @@ class App extends Component {
     })
   }
 
-  channelItemPageHandler = () =>{
+  channelItemPageFlagHandler = () =>{
     const {channelItemPageFlag} = this.state
+    if(channelItemPageFlag)
     this.setState({
-      channelItemPageFlag: !channelItemPageFlag
+        channelItemPageFlag: !channelItemPageFlag
     })
   }
 
   render() {
-    const {addPageFlag} = this.state
+    const {addPageFlag, channelItemPageFlag} = this.state
     return (
       <div className='App'>
         {addPageFlag?
@@ -41,10 +42,13 @@ class App extends Component {
 
         <section className='container'>
           <div className='item1'>
-            <SideBar />
+            <SideBar HomeHandler={this.channelItemPageFlagHandler}/>
           </div>
           <div className='item2'>
-            <Contents />
+            <Contents 
+              channelItemPageFlag={channelItemPageFlag}
+              channelItemPageFlagHandler={this.channelItemPageFlagHandler}
+              />
           </div>
         </section>
 

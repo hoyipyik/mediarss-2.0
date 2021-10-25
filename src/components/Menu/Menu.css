@@ -12,6 +12,11 @@
     margin: 3px 5px;
 }
 
+.Menu div.menu-item:hover{
+    zoom: 90%;
+    cursor: pointer;
+}
+
 .Menu span{
     position: relative;
     left: 4.5%;

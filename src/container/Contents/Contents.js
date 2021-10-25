@@ -10,26 +10,20 @@ import "./Contents.css"
 export default class Contents extends Component {
 
     state = {
-        channelItemPageFlag: true,
+        
     }
 
-    channelItemPageFlagHandler = () =>{
-        const {channelItemPageFlag} = this.state
-        if(channelItemPageFlag)
-        this.setState({
-            channelItemPageFlag: !channelItemPageFlag
-        })
-    }
 
     render() {
-        const {channelItemPageFlag} = this.state
+        const {channelItemPageFlag} = this.props
+
 
         return (
             <div className='Contents'>
                 <section className='top-bar'>
                     <TopBar 
-                        channelItemPageFlag={channelItemPageFlag}
-                        channelItemPageFlagHandler={this.channelItemPageFlagHandler}
+                        channelItemPageFlag={this.props.channelItemPageFlag}
+                        channelItemPageFlagHandler={this.props.channelItemPageFlagHandler}
                     />
                 </section>
                 <section className='main-contents'>

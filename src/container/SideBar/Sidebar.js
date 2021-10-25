@@ -12,7 +12,7 @@ class Sidebar extends Component {
             <div className='Sidebar'>
                 <h1>Media Rss</h1>
                 <div className='side-menu'>
-                    <Menu/>
+                    <Menu HomeHandler={this.props.HomeHandler}/>
                 </div>
                 <div className='side-list'>
                     <Playlist/>
