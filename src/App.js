@@ -7,14 +7,14 @@ import AddPage from './components/AddPage/AddPage'
 import Backdrop from './components/Backdrop/Backdrop'
 
 import "./App.css"
-import { FlashAuto } from '@material-ui/icons'
+// import { FlashAuto } from '@material-ui/icons'
 
 class App extends Component {
   state= {
     addPageFlag: false,
     channelItemPageFlag: true,
     homeFlag: true,
-    searchFlag: true,
+    searchFlag: false,
   }
 
 

@@ -30,15 +30,16 @@ export default class Contents extends Component {
                 </section>
                 <section className='main-contents'>
                     {channelItemPageFlag?
-                    <ChannelItemPage/>:
-                    <div>{searchFlag?
+                    <tag><ChannelItemPage/></tag>:
+                    // <Home/>
+                    <tag>{searchFlag?
                         <Search/>:
-                        <div>
+                        <tag>
                             {homeFlag?<Home/>:
                             <Library/>}
-                        </div> 
+                        </tag> 
                     }
-                    </div>
+                    </tag>
                     }
                 </section>
             </div>

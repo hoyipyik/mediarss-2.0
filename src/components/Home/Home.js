@@ -13,16 +13,13 @@ export default class Home extends Component {
                     <figcaption>Hi Spotify</figcaption>
                 </figure>
             </div>
-
-    
-            
+ 
         return (
             <div className='Home'>
                 <div className='container'>
                     <h1>Channels</h1>
                     <h4>Pinned</h4>
                     <section className='pinned-channels'>
-                        {channelItem}
                         {channelItem}
                         {channelItem}
                         {channelItem}

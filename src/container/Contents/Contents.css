@@ -12,5 +12,7 @@
 
 .Contents section.main-contents{
     flex: 18;
+    /* overflow: scroll;
+    overflow-x: hidden; */
     /* background-color: bisque; */
 }
