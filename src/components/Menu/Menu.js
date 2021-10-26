@@ -10,17 +10,17 @@ import "./Menu.css"
 const  Menu = (props) =>{
     return (
         <div className='Menu'>
-            <div className='menu-item' onClick={props.HomeHandler}>
+            <div className='menu-item' onClick={props.homeHandler}>
                 <span><SubscriptionsIcon/></span>
                 <span className='label'>Channels</span>
             </div>
             
-            <div className='menu-item'>
+            <div className='menu-item' onClick={props.searchHandler}>
                 <span><SearchIcon/></span>
                 <span className='label'>Search</span>
             </div>
             
-            <div className='menu-item'>
+            <div className='menu-item' onClick={props.libraryHandler}>
                 <span><VideoLibraryIcon/></span>
                 <span className='label'>Collections</span>
             </div>

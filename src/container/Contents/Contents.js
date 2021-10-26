@@ -1,9 +1,11 @@
+import { LibraryAdd } from '@material-ui/icons'
 import React, { Component } from 'react'
 
 import ChannelItemPage from '../../components/ChannelItemPage/ChannelItemPage'
 import Home from "../../components/Home/Home"
 import Search from "../../components/Search/Search"
 import TopBar from '../../components/TopBar/TopBar'
+import Library from '../../components/Library/Library'
 
 import "./Contents.css"
 
@@ -15,7 +17,7 @@ export default class Contents extends Component {
 
 
     render() {
-        const {channelItemPageFlag} = this.props
+        const {channelItemPageFlag, searchFlag, homeFlag} = this.props
 
 
         return (
@@ -29,8 +31,15 @@ export default class Contents extends Component {
                 <section className='main-contents'>
                     {channelItemPageFlag?
                     <ChannelItemPage/>:
-                    <Home/>}
-                    {/* <Search/> */}
+                    <div>{searchFlag?
+                        <Search/>:
+                        <div>
+                            {homeFlag?<Home/>:
+                            <Library/>}
+                        </div> 
+                    }
+                    </div>
+                    }
                 </section>
             </div>
         )

@@ -7,11 +7,14 @@ import AddPage from './components/AddPage/AddPage'
 import Backdrop from './components/Backdrop/Backdrop'
 
 import "./App.css"
+import { FlashAuto } from '@material-ui/icons'
 
 class App extends Component {
   state= {
     addPageFlag: false,
     channelItemPageFlag: true,
+    homeFlag: true,
+    searchFlag: true,
   }
 
 
@@ -26,12 +29,36 @@ class App extends Component {
     const {channelItemPageFlag} = this.state
     if(channelItemPageFlag)
     this.setState({
-        channelItemPageFlag: !channelItemPageFlag
+        channelItemPageFlag: false,
+    })
+  }
+
+  homeHandler = () =>{
+    // const {channelItemPageFlag, homeFlag} = this.state
+    this.setState({
+      channelItemPageFlag: false,
+      homeFlag: true,
+      searchFlag: false,
+    })
+  }
+
+  libraryHandler = () =>{
+    this.setState({
+      channelItemPageFlag: false,
+      homeFlag: false,
+      searchFlag: false,
+    })
+  }
+
+  searchHandler = ()=>{
+    this.setState({
+      channelItemPageFlag: false,
+      searchFlag: true,
     })
   }
 
   render() {
-    const {addPageFlag, channelItemPageFlag} = this.state
+    const {addPageFlag, channelItemPageFlag, searchFlag, homeFlag} = this.state
     return (
       <div className='App'>
         {addPageFlag?
@@ -42,10 +69,16 @@ class App extends Component {
 
         <section className='container'>
           <div className='item1'>
-            <SideBar HomeHandler={this.channelItemPageFlagHandler}/>
+            <SideBar 
+              homeHandler={this.homeHandler}
+              libraryHandler={this.libraryHandler}
+              searchHandler = {this.searchHandler}
+              />
           </div>
           <div className='item2'>
             <Contents 
+              searchFlag={searchFlag}
+              homeFlag={homeFlag}
               channelItemPageFlag={channelItemPageFlag}
               channelItemPageFlagHandler={this.channelItemPageFlagHandler}
               />
