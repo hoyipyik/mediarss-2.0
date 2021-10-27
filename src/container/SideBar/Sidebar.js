@@ -20,7 +20,7 @@ class Sidebar extends Component {
                     />
                 </div>
                 <div className='side-list'>
-                    {homeFlag?<Playlist/>:
+                    {!homeFlag?<Playlist/>:
                     <ChannelList changeGetmsgHolder={this.props.changeGetmsgHolder}/> }
                 </div> 
             </div>

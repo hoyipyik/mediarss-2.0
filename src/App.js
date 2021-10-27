@@ -6,6 +6,7 @@ import AddButton from "./components/AddButton/AddButton"
 import AddPage from './components/AddPage/AddPage'
 import Backdrop from './components/Backdrop/Backdrop'
 import SettingPage from "./components/SettingPage/SettingPage"
+import PlayPage from './components/PlayPage/PlayPage'
 
 import "./App.css"
 // import { FlashAuto } from '@material-ui/icons'
@@ -19,6 +20,7 @@ class App extends Component {
     settingPageFlag: false,
     getmsgHolder: [],
     videolink: '',
+    playFlag: false,
   }
 
   changeGetmsgHolder = (msg) =>{
@@ -40,6 +42,13 @@ class App extends Component {
     const {settingPageFlag} = this.state
     this.setState({
       settingPageFlag: !settingPageFlag
+    })
+  }
+
+  playFlagHandler = ()=>{
+    const {playFlag} = this.state
+    this.setState({
+      playFlag: !playFlag
     })
   }
 
@@ -78,11 +87,12 @@ class App extends Component {
   videolinkHandler = (link) =>{
     this.setState({
       videolink: link,
+      playFlag: true,
     })
   }
 
   render() {
-    const {addPageFlag, getmsgHolder,
+    const {addPageFlag, getmsgHolder, playFlag, videolink,
       channelItemPageFlag, searchFlag, 
       homeFlag, settingPageFlag} = this.state
     return (
@@ -99,6 +109,12 @@ class App extends Component {
           <SettingPage/>
         </section>:null}
 
+        {playFlag?
+        <section className='floatover-page'>
+          <Backdrop addButtonHandler={this.playFlagHandler}/>
+          <PlayPage link={videolink}/>
+        </section>:null}
+
         <section className='container'>
           <div className='item1'>
             <SideBar 
@@ -111,6 +127,7 @@ class App extends Component {
           </div>
           <div className='item2'>
             <Contents 
+              changeGetmsgHolder={this.changeGetmsgHolder}
               videolinkHandler={this.videolinkHandler}
               getmsgHolder={getmsgHolder}
               searchFlag={searchFlag}

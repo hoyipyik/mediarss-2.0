@@ -40,7 +40,7 @@ export default class Contents extends Component {
                     <tag>{searchFlag?
                         <Search/>:
                         <tag>
-                            {homeFlag?<Home/>:
+                            {homeFlag?<Home changeGetmsgHolder={this.props.changeGetmsgHolder}/>:
                             <Library/>}
                         </tag> 
                     }

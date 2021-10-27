@@ -1,0 +1,57 @@
+.PlayPage{
+    z-index: inherit;
+    position: relative;
+    left: 13%;
+    top: 9.5%;
+    width: 75%;
+    /* margin: 7% 12%; */
+    height: 79vh;
+    border-radius: 1.5%;
+    box-shadow: 5px 4.5px 1px -1px rgba(0, 0, 0, 0.411);
+    background-color:aliceblue ;
+}
+
+.PlayPage div.container{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    /* background-color: aqua; */
+    height: 100%;
+}
+
+.PlayPage h1{
+    padding: 1% 1%;
+}
+
+.PlayPage input{
+    width: 100%;
+    border: #4244469d solid;
+    margin: 1% 1%;
+    padding: 1% 1%;
+    height: 9%;
+    border-radius: 5px;
+    font-size: medium;
+    background-color: aliceblue;
+}
+
+.PlayPage input:focus{
+    outline: none;
+    border: #4244469d solid;
+    box-shadow: 1px 1px #585858a1;
+
+} 
+
+.PlayPage button{
+    margin: 1% 1%;
+    width: 8%;
+    height: 8%;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: #296d9e;
+}
+
+.PlayPage button:hover{
+    background-color:#235d86;
+    cursor: pointer;
+}

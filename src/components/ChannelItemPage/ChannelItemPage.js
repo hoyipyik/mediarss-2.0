@@ -18,6 +18,7 @@ export default class ChannelItemPage extends Component {
     updateLinks = (getmsg) =>{
         axios.get("/channels"+getmsg+".json")
             .then(res=>{
+                // console.log("/channels"+ getmsg +".json")
                 const links = res.data.links
                 console.log(res.data.links)
                 this.setState({
@@ -28,6 +29,7 @@ export default class ChannelItemPage extends Component {
 
     componentDidMount(){
         const [title, getmsg] = this.props.getmsgHolder
+        // console.log("[ChannelItemPage.js]: Mount")
         this.updateLinks(getmsg)
     }
 

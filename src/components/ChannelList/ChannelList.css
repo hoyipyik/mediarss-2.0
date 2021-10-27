@@ -13,3 +13,9 @@
     margin: 4.5% 2%;
     text-align: left;
 }
+
+.ChannelList div.channelList-item:hover{
+    zoom: 98%;
+    font-weight: bold;
+    cursor: pointer;
+}
