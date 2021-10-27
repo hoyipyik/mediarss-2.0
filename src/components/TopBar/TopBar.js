@@ -12,7 +12,7 @@ const TopBar = (props) => {
             <div className='container'>
                 <span id='back-icon' onClick={props.channelItemPageFlagHandler}><ArrowBackIosIcon/></span>
                 <span id='user-icon'><AccountCircleIcon/></span>
-                <span id="setting-icon"><SettingsIcon/></span>
+                <span id="setting-icon" onClick={props.settingPageHandler}><SettingsIcon/></span>
             </div>
             
         </div>

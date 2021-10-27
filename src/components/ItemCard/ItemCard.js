@@ -11,7 +11,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 
-import poster from "../../poster.jpeg"
+// import poster from "../../poster.jpeg"
+import "./ItemCard.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,25 +32,56 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: "rotate(180deg)"
   },
+  cardContent:{
+    height: 78,
+  }
 }));
 
 export default function ItemCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const {item} = props
+  const image = item.videoimage 
+  const link = item.videolink
+  const title = item.videotitle
 
+
+  // const displayTitle = title.length < 57 ? title + holder +"...": title.slice(0,57) + "..."
+  // displayTitle = displayTitle + "..."
   return (
-    <Card className={classes.root}>
+    // <div className="ItemCard">
+    //   <section className="card-image">
+    //     <img src={image} />
+    //   </section>
+
+    //   <section className="card-title">
+    //     {title}
+    //   </section>
+
+    //   <section className="card-action">
+
+    //   </section>
+    // </div>
+
+
+
+<Card className={classes.root} className="ItemCard">
+      <tag className="card-media">
       <CardMedia
         className={classes.media}
-        image={poster}
+        image={image}
         title="Paella dish"
       />
-      <CardContent>
+      </tag>
+      <tag className='card-content'>
+      <CardContent className={classes.cardContent}>
         <Typography variant="body2" color="textSecondary" component="p">
-          erfect party dish and a eal to 
+          {title}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      </tag>
+      <tag className="card-action">
+      <CardActions disableSpacing >
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
@@ -61,9 +93,19 @@ export default function ItemCard(props) {
             [classes.expandOpen]: expanded
           })}
         >
-            <PlayCircleFilledIcon/>
+            <PlayCircleFilledIcon onClick={()=>props.videolinkHandler(link)}/>
         </IconButton>
       </CardActions>
+      </tag>
     </Card>
   );
 }
+
+
+
+/**
+ * Notice 
+ * Don't touch it
+ * 
+ * It will make you unlucky
+ */

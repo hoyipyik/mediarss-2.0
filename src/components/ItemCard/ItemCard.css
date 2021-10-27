@@ -1,0 +1,20 @@
+.ItemCard .card-action{
+    /* vertical-align: bottom; */
+    position: relative;
+    bottom: 10px;
+}
+
+.ItemCard .card-content{
+    position: relative;
+    height: 20%;
+    background-color: aqua;
+}
+
+.ItemCard .card-media{
+    position: relative;
+}
+
+.ItemCard img{
+    width: 200px;
+    height:120px;
+}

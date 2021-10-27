@@ -1,0 +1,61 @@
+.SettingPage{
+    z-index: inherit;
+    position: relative;
+    left: 6%;
+    top: 6%;
+    width: 88%;
+    /* margin: 7% 12%; */
+    height: 88vh;
+    border-radius: 1.5%;
+    box-shadow: 5px 4.5px 1px -1px rgba(0, 0, 0, 0.411);
+    background-color:aliceblue ;
+}
+
+.SettingPage div.container{
+    position: relative;
+    margin: 2% 2%;
+    padding: 2% 2%;
+    /* background-color: aqua; */
+    height: 93%;
+}
+
+.SettingPage h1{
+    padding: 1% 1%;
+}
+
+.SettingPage p{
+    padding: 1% 1%;
+}
+/* 
+.SettingPage input{
+    width: 100%;
+    border: #4244469d solid;
+    margin: 1% 1%;
+    padding: 1% 1%;
+    height: 9%;
+    border-radius: 5px;
+    font-size: medium;
+    background-color: aliceblue;
+}
+
+.SettingPage input:focus{
+    outline: none;
+    border: #4244469d solid;
+    box-shadow: 1px 1px #585858a1;
+
+}  */
+
+.SettingPage button{
+    margin: 1% 1%;
+    width: 8%;
+    height: 8%;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: #296d9e;
+}
+
+.SettingPage button:hover{
+    background-color:#235d86;
+    cursor: pointer;
+}

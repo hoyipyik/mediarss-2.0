@@ -8,6 +8,7 @@ import "./Sidebar.css"
 
 class Sidebar extends Component {
     render() {
+        const {homeFlag} = this.props
         return (
             <div className='Sidebar'>
                 <h1>Media Rss</h1>
@@ -19,8 +20,8 @@ class Sidebar extends Component {
                     />
                 </div>
                 <div className='side-list'>
-                    <Playlist/>
-                    {/* <ChannelList/>  */}
+                    {homeFlag?<Playlist/>:
+                    <ChannelList changeGetmsgHolder={this.props.changeGetmsgHolder}/> }
                 </div> 
             </div>
             

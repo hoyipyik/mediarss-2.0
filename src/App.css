@@ -38,7 +38,7 @@
    
 }
 
-.App section.add-page{
+.App section.floatover-page{
     position: absolute;
     z-index: 3;
     width: 100%;

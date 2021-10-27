@@ -17,20 +17,25 @@ export default class Contents extends Component {
 
 
     render() {
-        const {channelItemPageFlag, searchFlag, homeFlag} = this.props
+        const {channelItemPageFlag, searchFlag, homeFlag, getmsgHolder} = this.props
 
 
         return (
             <div className='Contents'>
                 <section className='top-bar'>
                     <TopBar 
+                        settingPageFlag={this.props.settingPageFlag}
+                        settingPageHandler={this.props.settingPageHandler}
                         channelItemPageFlag={this.props.channelItemPageFlag}
                         channelItemPageFlagHandler={this.props.channelItemPageFlagHandler}
                     />
                 </section>
                 <section className='main-contents'>
                     {channelItemPageFlag?
-                    <tag><ChannelItemPage/></tag>:
+                    <tag><ChannelItemPage 
+                            getmsgHolder={getmsgHolder}
+                            videolinkHandler={this.props.videolinkHandler}
+                        /></tag>:
                     // <Home/>
                     <tag>{searchFlag?
                         <Search/>:

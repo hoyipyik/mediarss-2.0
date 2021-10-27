@@ -5,6 +5,7 @@ import Contents from "./container/Contents/Contents"
 import AddButton from "./components/AddButton/AddButton"
 import AddPage from './components/AddPage/AddPage'
 import Backdrop from './components/Backdrop/Backdrop'
+import SettingPage from "./components/SettingPage/SettingPage"
 
 import "./App.css"
 // import { FlashAuto } from '@material-ui/icons'
@@ -12,9 +13,19 @@ import "./App.css"
 class App extends Component {
   state= {
     addPageFlag: false,
-    channelItemPageFlag: true,
+    channelItemPageFlag: false,
     homeFlag: true,
     searchFlag: false,
+    settingPageFlag: false,
+    getmsgHolder: [],
+    videolink: '',
+  }
+
+  changeGetmsgHolder = (msg) =>{
+     this.setState({
+       getmsgHolder: msg,
+       channelItemPageFlag: true,
+     })
   }
 
 
@@ -22,6 +33,13 @@ class App extends Component {
     const {addPageFlag} = this.state
     this.setState({
       addPageFlag: !addPageFlag
+    })
+  }
+
+  settingPageHandler = () =>{
+    const {settingPageFlag} = this.state
+    this.setState({
+      settingPageFlag: !settingPageFlag
     })
   }
 
@@ -57,19 +75,35 @@ class App extends Component {
     })
   }
 
+  videolinkHandler = (link) =>{
+    this.setState({
+      videolink: link,
+    })
+  }
+
   render() {
-    const {addPageFlag, channelItemPageFlag, searchFlag, homeFlag} = this.state
+    const {addPageFlag, getmsgHolder,
+      channelItemPageFlag, searchFlag, 
+      homeFlag, settingPageFlag} = this.state
     return (
       <div className='App'>
         {addPageFlag?
-        <section className='add-page'>
+        <section className='floatover-page'>
           <Backdrop addButtonHandler={this.addButtonHandler}/>
           <AddPage/>
+        </section>:null}
+
+        {settingPageFlag?
+        <section className='floatover-page'>
+          <Backdrop addButtonHandler={this.settingPageHandler}/>
+          <SettingPage/>
         </section>:null}
 
         <section className='container'>
           <div className='item1'>
             <SideBar 
+              changeGetmsgHolder={this.changeGetmsgHolder}
+              homeFlag={homeFlag}
               homeHandler={this.homeHandler}
               libraryHandler={this.libraryHandler}
               searchHandler = {this.searchHandler}
@@ -77,8 +111,12 @@ class App extends Component {
           </div>
           <div className='item2'>
             <Contents 
+              videolinkHandler={this.videolinkHandler}
+              getmsgHolder={getmsgHolder}
               searchFlag={searchFlag}
               homeFlag={homeFlag}
+              settingPageFlag={settingPageFlag}
+              settingPageHandler={this.settingPageHandler}
               channelItemPageFlag={channelItemPageFlag}
               channelItemPageFlagHandler={this.channelItemPageFlagHandler}
               />
