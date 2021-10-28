@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 // import poster from "../../poster.jpeg"
 import "./ItemCard.css"
@@ -44,6 +45,7 @@ export default function ItemCard(props) {
   const image = item.videoimage 
   const link = item.videolink
   const title = item.videotitle
+  const like = item.like
 
   // const displayTitle = title.length < 57 ? title + holder +"...": title.slice(0,57) + "..."
   // displayTitle = displayTitle + "..."
@@ -67,7 +69,7 @@ export default function ItemCard(props) {
       <CardActions disableSpacing >
         {props.type==="channels"?<tag>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          {like?<FavoriteIcon />:<FavoriteBorderIcon/>}
         </IconButton>
         <IconButton aria-label="share">
           <PlaylistAddIcon />

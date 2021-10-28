@@ -45,7 +45,7 @@ export default class ItemPage extends Component {
     
     
     render() {
-        const [title, getmsg, poster, type] = this.props.getmsgHolder
+        const [title, getmsg, poster, type, pinned] = this.props.getmsgHolder
         // console.log(poster)
         const name = type.toUpperCase()
         const {links} = this.state
@@ -60,7 +60,7 @@ export default class ItemPage extends Component {
                         <img src={poster} className='channel-item-poster'/>
                         <h3>{name}</h3>
                         <h1 className='item-title'>{title}</h1>
-                        <span id='pin-icon'><BookmarkBorderIcon /></span>
+                        <span id='pin-icon'>{pinned?<BookmarkIcon/>:<BookmarkBorderIcon />}</span>
                         {/* <p className='item-intro'>This is TEDx Channel</p> */}
                     </header>
                     {/* <section className='recent-item'>

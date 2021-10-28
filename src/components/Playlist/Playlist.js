@@ -26,7 +26,7 @@ export default class Playlist extends Component {
         const list = [...this.state.playlist]
         const listItem = list.map((item, index) =>{
             // console.log(item.title, "*********")
-            const msg = [item.title, item.getmsg, item.icon, "library"]
+            const msg = [item.title, item.getmsg, item.icon, "library",item.pinned ]
             return  <div 
                     key={index} 
                     className='playlist-item'

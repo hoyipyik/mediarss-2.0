@@ -23,7 +23,8 @@ export default class Library extends Component {
             const title = item.title
             const icon = item.icon
             const getmsg = item.getmsg
-            const msg = [title, getmsg, icon, "library"]
+            const pinned = item.pinned
+            const msg = [title, getmsg, icon, "library", pinned]
             // console.log(msg)
             return(
                 // 
