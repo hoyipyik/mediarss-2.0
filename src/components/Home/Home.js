@@ -24,7 +24,7 @@ export default class Home extends Component {
             const title = item.title
             const icon = item.icon
             const getmsg = item.getmsg
-            const msg = [title, getmsg, icon]
+            const msg = [title, getmsg, icon, "channels"]
             // console.log(msg)
             return(
                 // 

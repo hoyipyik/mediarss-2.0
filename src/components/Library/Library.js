@@ -1,12 +1,62 @@
 import React, { Component } from 'react'
 
+import axios from '../../axios'
 import "./Library.css"
 
 export default class Library extends Component {
+    state = {
+        list: [],
+    }
+
+    componentDidMount(){
+        axios.get("playlist.json")
+            .then(res=>{
+                this.setState({
+                    list: res.data
+                })
+            })
+    }
+
     render() {
+        const {list} = this.state
+        const channelItem = list.map((item, index)=>{
+            const title = item.title
+            const icon = item.icon
+            const getmsg = item.getmsg
+            const msg = [title, getmsg, icon, "library"]
+            // console.log(msg)
+            return(
+                // 
+            <div className='playlist-item' onClick={()=>this.props.changeGetmsgHolder(msg)}>
+                <figure>
+                    <img src={icon}/>
+                    <figcaption>{title}</figcaption>
+                </figure>
+            </div>)
+        })
+
+            
+ 
         return (
             <div className='Library'>
-                <h1>This is Library Page</h1>
+                <div className='container'>
+                    <h1>Library</h1>
+                    {/* <h4>Pinned</h4>
+                    <section className='pinned-playlist'>
+                        {channelItem}
+                        {channelItem}
+                        {channelItem}
+                        {channelItem}
+                        {channelItem}
+                        {channelItem}
+                        {channelItem}
+                    </section> */}
+                    <h4>Full List</h4>
+                    <section className='common-playlist'>
+                        {channelItem}
+                        {/* {channelItem} */}
+                    </section>
+                </div>
             </div>
         )
     }

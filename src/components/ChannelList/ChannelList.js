@@ -26,7 +26,7 @@ export default class ChannelList extends Component {
         const list = [...this.state.list]
         const listItem = list.map((item, index) =>{
             // console.log(item.title, "*********")
-            const msg = [item.title, item.getmsg, item.icon]
+            const msg = [item.title, item.getmsg, item.icon, "channels"]
             return  <div 
                     key={index} 
                     className='channelList-item'

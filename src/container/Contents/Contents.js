@@ -1,7 +1,7 @@
 import { LibraryAdd } from '@material-ui/icons'
 import React, { Component } from 'react'
 
-import ChannelItemPage from '../../components/ChannelItemPage/ChannelItemPage'
+import ItemPage from '../../components/ItemPage/ItemPage'
 import Home from "../../components/Home/Home"
 import Search from "../../components/Search/Search"
 import TopBar from '../../components/TopBar/TopBar'
@@ -32,7 +32,7 @@ export default class Contents extends Component {
                 </section>
                 <section className='main-contents'>
                     {channelItemPageFlag?
-                    <tag><ChannelItemPage 
+                    <tag><ItemPage 
                             getmsgHolder={getmsgHolder}
                             videolinkHandler={this.props.videolinkHandler}
                         /></tag>:
@@ -41,7 +41,7 @@ export default class Contents extends Component {
                         <Search/>:
                         <tag>
                             {homeFlag?<Home changeGetmsgHolder={this.props.changeGetmsgHolder}/>:
-                            <Library/>}
+                            <Library changeGetmsgHolder={this.props.changeGetmsgHolder}/>}
                         </tag> 
                     }
                     </tag>

@@ -45,26 +45,9 @@ export default function ItemCard(props) {
   const link = item.videolink
   const title = item.videotitle
 
-
   // const displayTitle = title.length < 57 ? title + holder +"...": title.slice(0,57) + "..."
   // displayTitle = displayTitle + "..."
   return (
-    // <div className="ItemCard">
-    //   <section className="card-image">
-    //     <img src={image} />
-    //   </section>
-
-    //   <section className="card-title">
-    //     {title}
-    //   </section>
-
-    //   <section className="card-action">
-
-    //   </section>
-    // </div>
-
-
-
 <Card className={classes.root} className="ItemCard">
       <tag className="card-media">
       <CardMedia
@@ -82,12 +65,14 @@ export default function ItemCard(props) {
       </tag>
       <tag className="card-action">
       <CardActions disableSpacing >
+        {props.type==="channels"?<tag>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
           <PlaylistAddIcon />
         </IconButton>
+        </tag>:null}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded
@@ -100,12 +85,3 @@ export default function ItemCard(props) {
     </Card>
   );
 }
-
-
-
-/**
- * Notice 
- * Don't touch it
- * 
- * It will make you unlucky
- */

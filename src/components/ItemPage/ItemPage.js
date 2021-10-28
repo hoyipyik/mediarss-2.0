@@ -3,20 +3,21 @@ import React, { Component } from 'react'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 
-import './ChannelItemPage.css'
+import './ItemPage.css'
 import image from "../../poster.jpeg"
 import ItemCard from "../ItemCard/ItemCard"
 
 import axios from "../../axios"
 
-export default class ChannelItemPage extends Component {
+export default class ItemPage extends Component {
 
     state = {
         links: [],
     }
 
-    updateLinks = (getmsg) =>{
-        axios.get("/channels"+getmsg+".json")
+    updateLinks = (getmsg, type) =>{
+        type = "/" + type
+        axios.get(type+getmsg+".json")
             .then(res=>{
                 // console.log("/channels"+ getmsg +".json")
                 const links = res.data.links
@@ -28,35 +29,36 @@ export default class ChannelItemPage extends Component {
     }
 
     componentDidMount(){
-        const [title, getmsg] = this.props.getmsgHolder
+        const [title, getmsg, icon, type] = this.props.getmsgHolder
         // console.log("[ChannelItemPage.js]: Mount")
-        this.updateLinks(getmsg)
+        this.updateLinks(getmsg, type)
     }
 
 
     componentDidUpdate(prevProps, prevState){
-        const [title, getmsg] = this.props.getmsgHolder
-        const [prevTitle, prevGetmsg] = prevProps.getmsgHolder
+        const [title, getmsg, icon, type] = this.props.getmsgHolder
+        const [prevTitle, prevGetmsg, prevIcon, prevType] = prevProps.getmsgHolder
         if(prevGetmsg !== getmsg){
-            this.updateLinks(getmsg)
+            this.updateLinks(getmsg, type)
         }
     }
     
     
     render() {
-        const [title, getmsg, poster] = this.props.getmsgHolder
+        const [title, getmsg, poster, type] = this.props.getmsgHolder
         // console.log(poster)
+        const name = type.toUpperCase()
         const {links} = this.state
         const card = links.map((item, index) =>{
-            return <ItemCard item={item} videolinkHandler={this.props.videolinkHandler}/>
+            return <ItemCard item={item} videolinkHandler={this.props.videolinkHandler} type={type}/>
         })
-
+        
         return (
             <div className='ChannelItemPage'>
                 <div className='container'>
                     <header>
                         <img src={poster} className='channel-item-poster'/>
-                        <h3>Channels</h3>
+                        <h3>{name}</h3>
                         <h1 className='item-title'>{title}</h1>
                         <span id='pin-icon'><BookmarkBorderIcon /></span>
                         {/* <p className='item-intro'>This is TEDx Channel</p> */}
