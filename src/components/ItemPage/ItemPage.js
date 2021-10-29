@@ -73,14 +73,14 @@ export default class ItemPage extends Component {
         // let flag2 = false
         axios.delete("/"+type+getmsg+".json")
             .then(res=>{
-                console.log(res)
+                // console.log(res)
                 // flag1 = true
             })
             .catch(err=>console.log(err))
         const addr = type==="channel"?"/list/":"/playlist/"
         axios.delete(addr+index+".json")
             .then(res=>{
-                console.log(res)
+                // console.log(res)
                 this.props.listChangedFlagHandler()
                 
                 setTimeout(()=>{
@@ -95,6 +95,21 @@ export default class ItemPage extends Component {
             
         // }
     }
+
+    rebuildArray= (num) =>{
+        const [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
+        const {links} = this.state
+        const newCard = links.filter((item, index)=>{
+            return  index !== num
+        })
+        // console.log(newCard, "hey new card")
+        this.setState({
+            links: newCard,
+        })
+        axios.put("/library"+ getmsg +"/links.json", newCard)
+            .then(res=>console.log(res))
+            .catch(err=>console.log(err))
+    }
     
     render() {
         let [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
@@ -103,7 +118,7 @@ export default class ItemPage extends Component {
         const name = type.toUpperCase()
         const {links} = this.state
         const card = links.map((item, index) =>{
-            return <ItemCard  getmsg={getmsg} type={type} index={index} item={item} videolinkHandler={this.props.videolinkHandler} type={type}/>
+            return <ItemCard rebuildArray={this.rebuildArray} getmsg={getmsg} type={type} index={index} item={item} videolinkHandler={this.props.videolinkHandler} type={type}/>
         })
         
         return (

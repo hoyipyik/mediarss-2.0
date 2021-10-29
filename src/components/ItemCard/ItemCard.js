@@ -56,9 +56,9 @@ export default function ItemCard(props) {
   useEffect(() => {
     const addr = "/"+type+getmsg+"/links/"+index+"/like.json"
     axios.put(addr, like)
-      .then(res=>console.log(res))
+      // .then(res=>console.log(res))
       .catch(err=>console.log(err))
-    console.log(like)
+    // console.log(like)
   }, [like])
 
   // const displayTitle = title.length < 57 ? title + holder +"...": title.slice(0,57) + "..."
@@ -89,7 +89,7 @@ export default function ItemCard(props) {
           <PlaylistAddIcon />
         </IconButton>
         </tag>:
-        <IconButton aria-label="remove" >
+        <IconButton aria-label="remove" onClick={()=>props.rebuildArray(index)} >
           <DeleteIcon/>
         </IconButton>
         }
