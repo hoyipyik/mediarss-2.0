@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import axios from '../../axios'
 
 import "./Home.css"
 // import poster from "../../poster.jpeg"
 
-export default class Home extends Component {
+export default class Home extends PureComponent {
     state = {
         list: [],
     }

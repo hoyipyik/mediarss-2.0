@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 import axios from '../../axios'
 import "./Library.css"
 
-export default class Library extends Component {
+export default class Library extends PureComponent {
     state = {
         list: [],
     }
