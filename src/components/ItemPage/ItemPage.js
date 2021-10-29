@@ -12,7 +12,7 @@ export default class ItemPage extends Component {
 
     state = {
         links: [],
-        pinned: false,
+        // pinned: false,
     }
 
     updateLinks = (getmsg, type) =>{
@@ -30,14 +30,14 @@ export default class ItemPage extends Component {
     }
 
     componentDidMount(){
-        const [title, getmsg, icon, type, pinned] = this.props.getmsgHolder
+        const [title, getmsg, icon, type, pinned, id, index] = this.props.getmsgHolder
         // console.log("[ChannelItemPage.js]: Mount")
         this.updateLinks(getmsg, type)
     }
 
 
     componentDidUpdate(prevProps, prevState){
-        const [title, getmsg, icon, type, pinned] = this.props.getmsgHolder
+        const [title, getmsg, icon, type, pinned, id, index] = this.props.getmsgHolder
         const [prevTitle, prevGetmsg, prevIcon, prevType] = prevProps.getmsgHolder
         if(prevProps.getmsgHolder !== this.props.getmsgHolder){
             this.updateLinks(getmsg, type)
@@ -49,16 +49,20 @@ export default class ItemPage extends Component {
         const [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
         // console.log(title)
         let uploadItem = !pinned
+        const passHolder = [index, type, uploadItem]
+        this.props.pinnedPageLocalHandler(passHolder)
+        // console.log(uploadItem)
         // uploadItem = 1
         axios.put(type+getmsg+"/pinned.json", uploadItem)
             .then(res=>{
-                // console.log(res)
+                console.log(res)
             })
             .catch(err=>console.log(err))
         let listFlag = type==="channel"?"/list":"/playlist"
+        console.log(id, "This is ID commander")
         axios.put(listFlag+"/"+ id +"/pinned.json", uploadItem)
             .then(res=>{
-                // console.log(res)
+                console.log(res)
             })
             .catch(err=>{
                 console.log(err)
@@ -70,6 +74,7 @@ export default class ItemPage extends Component {
         let [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
         const passHolder = [index, type]
         this.props.pageRemoveHandler(passHolder)
+        
         // let flag1 = false
         // let flag2 = false
         axios.delete("/"+type+getmsg+".json")
@@ -115,7 +120,6 @@ export default class ItemPage extends Component {
     render() {
         let [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
         // console.log(poster)
-        // [pinned]  = pinned
         const name = type.toUpperCase()
         const {links} = this.state
         const card = links.map((item, index) =>{

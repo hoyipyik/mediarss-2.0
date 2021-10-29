@@ -133,21 +133,27 @@ class App extends Component {
     const [index, type] = holder
     const {list, playlist} = this.state
     const listHolder = type==="channel"?list:playlist
-    
     const nameHolder = type==="channel"?"list":"playlist"
     const newList = listHolder.filter((item, num)=>{
       return index !== num
     })
-    // console.log(index,"......hey")
-    // console.log("changed ~!!!!!!!")
-    // if (type==="channel")
     this.setState({
       [nameHolder]: [...newList]
     })
-    // else this.setState({
-    //   playlist: [...newList]
-    // })
   } 
+ 
+  pinnedPageLocalHandler = (holder) =>{
+    const [index, type, uploadItem] = holder
+    const {list, playlist} = this.state
+    const listHolder = type==="channel"?list:playlist
+    const nameHolder = type==="channel"?"list":"playlist"
+    let newList = [...listHolder]
+    newList[index].pinned = uploadItem
+    this.setState({
+      [nameHolder]: [...newList]
+    })
+  }
+
 
   render() {
     const {addPageFlag, getmsgHolder, playFlag, videolink, 
@@ -187,6 +193,7 @@ class App extends Component {
           <div className='item2'>
             <Contents
               list={list} playlist={playlist}
+              pinnedPageLocalHandler={this.pinnedPageLocalHandler}
               pageRemoveHandler={this.pageRemoveHandler}
               msgPinnedChanger={this.msgPinnedChanger}
               changeGetmsgHolder={this.changeGetmsgHolder}

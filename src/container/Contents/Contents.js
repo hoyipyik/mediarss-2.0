@@ -34,6 +34,7 @@ export default class Contents extends Component {
                 <section className='main-contents'>
                     {channelItemPageFlag?
                     <tag><ItemPage 
+                            pinnedPageLocalHandler={this.props.pinnedPageLocalHandler}
                             pageRemoveHandler={this.props.pageRemoveHandler}
                             channelItemPageFlagHandler={this.props.channelItemPageFlagHandler}
                             msgPinnedChanger={this.props.msgPinnedChanger}
