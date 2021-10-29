@@ -22,7 +22,7 @@ class App extends Component {
     getmsgHolder: [],
     videolink: '',
     playFlag: false,
-    listChangedFlag: false,
+    // listChangedFlag: false,
     list: [],
     playlist: [],
   }
@@ -47,12 +47,12 @@ class App extends Component {
       .catch(err=>console.log(err))
   }
 
-  listChangedFlagHandler= () =>{
-    const {listChangedFlag} = this.state
-    this.setState({
-        listChangedFlag: !listChangedFlag
-    })
-}
+//   listChangedFlagHandler= () =>{
+//     const {listChangedFlag} = this.state
+//     this.setState({
+//         listChangedFlag: !listChangedFlag
+//     })
+// }
 
   msgPinnedChanger = () =>{
     let [title, getmsg, icon, type, pinned, id, index] = this.state.getmsgHolder
@@ -134,23 +134,23 @@ class App extends Component {
     const {list, playlist} = this.state
     const listHolder = type==="channel"?list:playlist
     
-    // const nameHolder = type==="channel"?"list":"playlist"
+    const nameHolder = type==="channel"?"list":"playlist"
     const newList = listHolder.filter((item, num)=>{
       return index !== num
     })
-    console.log(index,"......hey")
+    // console.log(index,"......hey")
     // console.log("changed ~!!!!!!!")
-    if (type==="channel")
+    // if (type==="channel")
     this.setState({
-      list: [...newList]
+      [nameHolder]: [...newList]
     })
-    else this.setState({
-      playlist: [...newList]
-    })
+    // else this.setState({
+    //   playlist: [...newList]
+    // })
   } 
 
   render() {
-    const {addPageFlag, getmsgHolder, playFlag, videolink, listChangedFlag,
+    const {addPageFlag, getmsgHolder, playFlag, videolink, 
       channelItemPageFlag, searchFlag, list, playlist,
       homeFlag, settingPageFlag} = this.state
     return (
@@ -177,8 +177,6 @@ class App extends Component {
           <div className='item1'>
             <SideBar
               list={list} playlist={playlist}
-              listChangedFlag={listChangedFlag}
-              listChangedFlagHandler={this.listChangedFlagHandler}
               changeGetmsgHolder={this.changeGetmsgHolder}
               homeFlag={homeFlag}
               homeHandler={this.homeHandler}
@@ -190,8 +188,6 @@ class App extends Component {
             <Contents
               list={list} playlist={playlist}
               pageRemoveHandler={this.pageRemoveHandler}
-              listChangedFlag={listChangedFlag}
-              listChangedFlagHandler={this.listChangedFlagHandler}
               msgPinnedChanger={this.msgPinnedChanger}
               changeGetmsgHolder={this.changeGetmsgHolder}
               videolinkHandler={this.videolinkHandler}
