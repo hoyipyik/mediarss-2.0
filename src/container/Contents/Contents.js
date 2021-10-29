@@ -19,7 +19,7 @@ export default class Contents extends Component {
 
 
     render() {
-        const {channelItemPageFlag, searchFlag, homeFlag, getmsgHolder, listChangedFlag} = this.props
+        const {channelItemPageFlag, searchFlag, homeFlag, getmsgHolder, listChangedFlag, list, playlist} = this.props
 
         return (
             <div className='Contents'>
@@ -34,6 +34,7 @@ export default class Contents extends Component {
                 <section className='main-contents'>
                     {channelItemPageFlag?
                     <tag><ItemPage 
+                            pageRemoveHandler={this.props.pageRemoveHandler}
                             listChangedFlagHandler={this.props.listChangedFlagHandler}
                             channelItemPageFlagHandler={this.props.channelItemPageFlagHandler}
                             msgPinnedChanger={this.props.msgPinnedChanger}
@@ -45,9 +46,11 @@ export default class Contents extends Component {
                         <Search/>:
                         <tag>
                             {homeFlag?<Home 
+                                list={list}
                                 changeGetmsgHolder={this.props.changeGetmsgHolder}
                                 listChangedFlag={listChangedFlag}/>:
                             <Library
+                                list={playlist}
                                 changeGetmsgHolder={this.props.changeGetmsgHolder}
                                 listChangedFlag={listChangedFlag}
                                 />}

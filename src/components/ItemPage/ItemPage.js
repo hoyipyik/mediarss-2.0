@@ -46,7 +46,7 @@ export default class ItemPage extends Component {
     
     pinnedChangedHandler = () =>{   
         this.props.msgPinnedChanger()
-        const [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
+        const [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
         // console.log(title)
         let uploadItem = !pinned
         // uploadItem = 1
@@ -56,7 +56,7 @@ export default class ItemPage extends Component {
             })
             .catch(err=>console.log(err))
         let listFlag = type==="channel"?"/list":"/playlist"
-        axios.put(listFlag+"/"+ index +"/pinned.json", uploadItem)
+        axios.put(listFlag+"/"+ id +"/pinned.json", uploadItem)
             .then(res=>{
                 // console.log(res)
             })
@@ -67,8 +67,9 @@ export default class ItemPage extends Component {
     }
 
     pageRemover = () =>{
-        this.props.channelItemPageFlagHandler()
-        let [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
+        let [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
+        const passHolder = [index, type]
+        this.props.pageRemoveHandler(passHolder)
         // let flag1 = false
         // let flag2 = false
         axios.delete("/"+type+getmsg+".json")
@@ -76,31 +77,31 @@ export default class ItemPage extends Component {
                 // console.log(res)
                 // flag1 = true
             })
-            .catch(err=>console.log(err))
+            // .catch(err=>console.log(err))
         const addr = type==="channel"?"/list/":"/playlist/"
-        axios.delete(addr+index+".json")
+        axios.delete(addr+id+".json")
             .then(res=>{
                 // console.log(res)
-                this.props.listChangedFlagHandler()
-                
-                setTimeout(()=>{
-                    this.props.channelItemPageFlagHandler()
-                    console.log("listChangedFlag works", "#$%^&*(&^%$##$%^&*&^%$#$%^")
-                }, 1000)
+                // this.props.listChangedFlagHandler()
+                this.props.channelItemPageFlagHandler()
+                // setTimeout(()=>{
+                    
+                //     console.log("listChangedFlag works", "#$%^&*(&^%$##$%^&*&^%$#$%^")
+                // }, 0)
                 
                 // flag2 = true
             })
-            .catch(err=>console.log(err))
+            // .catch(err=>console.log(err))
         // if(flag1===true&&flag2===true){
             
         // }
     }
 
     rebuildArray= (num) =>{
-        const [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
+        const [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
         const {links} = this.state
-        const newCard = links.filter((item, index)=>{
-            return  index !== num
+        const newCard = links.filter((item, indexs)=>{
+            return  indexs !== num
         })
         // console.log(newCard, "hey new card")
         this.setState({
@@ -112,7 +113,7 @@ export default class ItemPage extends Component {
     }
     
     render() {
-        let [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
+        let [title, getmsg, poster, type, pinned, id, index] = this.props.getmsgHolder
         // console.log(poster)
         // [pinned]  = pinned
         const name = type.toUpperCase()

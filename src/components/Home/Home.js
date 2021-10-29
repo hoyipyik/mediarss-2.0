@@ -5,40 +5,41 @@ import "./Home.css"
 // import poster from "../../poster.jpeg"
 
 export default class Home extends PureComponent {
-    state = {
-        list: [],
-    }
+    // state = {
+    //     list: [],
+    // }
 
-    updateList = () =>{
-        axios.get("list.json")
-            .then(res=>{
-                console.log(Object.values(res.data),"Mount Home data")
-                this.setState({
-                    list: Object.values(res.data)
-                })
-            })
-    }
+    // updateList = () =>{
+    //     axios.get("list.json")
+    //         .then(res=>{
+    //             console.log(Object.values(res.data),"Mount Home data")
+    //             this.setState({
+    //                 list: Object.values(res.data)
+    //             })
+    //         })
+    // }
 
-    componentDidMount(){
-        this.updateList()
-    }
+    // componentDidMount(){
+    //     this.updateList()
+    // }
 
-    componentDidUpdate(prevProps, prevState){
-        if(prevProps.listChangedFlag!==this.props.listChangedFlag){
-            this.updateList()
-            // this.forceUpdate()
-        }
-    }
+    // componentDidUpdate(prevProps, prevState){
+    //     if(prevProps.listChangedFlag!==this.props.listChangedFlag){
+    //         this.updateList()
+    //         // this.forceUpdate()
+    //     }
+    // }
 
     render() {
-        const {list} = this.state
+        const {list} = this.props
         const channelItem = list.map((item, index)=>{
             const title = item.title
             const icon = item.icon
             const getmsg = item.getmsg
             const pinned = item.pinned
             const id = item.id
-            const msg = [title, getmsg, icon, "channel", pinned, id]
+            // const index = index
+            const msg = [title, getmsg, icon, "channel", pinned, id, index]
             // console.log(msg)
             return(
                 // 

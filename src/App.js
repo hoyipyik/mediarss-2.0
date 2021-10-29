@@ -9,6 +9,7 @@ import SettingPage from "./components/SettingPage/SettingPage"
 import PlayPage from './components/PlayPage/PlayPage'
 
 import "./App.css"
+import axios from './axios'
 // import { FlashAuto } from '@material-ui/icons'
 
 class App extends Component {
@@ -22,6 +23,28 @@ class App extends Component {
     videolink: '',
     playFlag: false,
     listChangedFlag: false,
+    list: [],
+    playlist: [],
+  }
+
+  componentDidMount(){
+    axios.get("/list.json")
+      .then(res=>{
+        console.log(res, "[App.js]: Mount list")
+        this.setState({
+          list: Object.values(res.data)
+        })
+      })
+      .catch(err=>console.log(err))
+
+    axios.get("/playlist.json")
+      .then(res=>{
+        console.log(res, "[App.js]: Mount Playlist")
+        this.setState({
+          playlist: Object.values(res.data)
+        })
+      })
+      .catch(err=>console.log(err))
   }
 
   listChangedFlagHandler= () =>{
@@ -32,9 +55,9 @@ class App extends Component {
 }
 
   msgPinnedChanger = () =>{
-    let [title, getmsg, icon, type, pinned, index] = this.state.getmsgHolder
+    let [title, getmsg, icon, type, pinned, id, index] = this.state.getmsgHolder
     this.setState({
-      getmsgHolder: [title, getmsg, icon, type, !pinned, index],
+      getmsgHolder: [title, getmsg, icon, type, !pinned, id, index],
     })
   }
 
@@ -106,9 +129,29 @@ class App extends Component {
     })
   }
 
+  pageRemoveHandler= (holder) =>{
+    const [index, type] = holder
+    const {list, playlist} = this.state
+    const listHolder = type==="channel"?list:playlist
+    
+    // const nameHolder = type==="channel"?"list":"playlist"
+    const newList = listHolder.filter((item, num)=>{
+      return index !== num
+    })
+    console.log(index,"......hey")
+    // console.log("changed ~!!!!!!!")
+    if (type==="channel")
+    this.setState({
+      list: [...newList]
+    })
+    else this.setState({
+      playlist: [...newList]
+    })
+  } 
+
   render() {
     const {addPageFlag, getmsgHolder, playFlag, videolink, listChangedFlag,
-      channelItemPageFlag, searchFlag, 
+      channelItemPageFlag, searchFlag, list, playlist,
       homeFlag, settingPageFlag} = this.state
     return (
       <div className='App'>
@@ -133,6 +176,7 @@ class App extends Component {
         <section className='container'>
           <div className='item1'>
             <SideBar
+              list={list} playlist={playlist}
               listChangedFlag={listChangedFlag}
               listChangedFlagHandler={this.listChangedFlagHandler}
               changeGetmsgHolder={this.changeGetmsgHolder}
@@ -144,6 +188,8 @@ class App extends Component {
           </div>
           <div className='item2'>
             <Contents
+              list={list} playlist={playlist}
+              pageRemoveHandler={this.pageRemoveHandler}
               listChangedFlag={listChangedFlag}
               listChangedFlagHandler={this.listChangedFlagHandler}
               msgPinnedChanger={this.msgPinnedChanger}

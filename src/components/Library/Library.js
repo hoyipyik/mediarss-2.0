@@ -4,38 +4,38 @@ import axios from '../../axios'
 import "./Library.css"
 
 export default class Library extends PureComponent {
-    state = {
-        list: [],
-    }
+    // state = {
+    //     list: [],
+    // }
 
-    updateList = () =>{
-        axios.get("playlist.json")
-            .then(res=>{
-                this.setState({
-                    list: Object.values(res.data)
-                })
-            })
-    }
+    // updateList = () =>{
+    //     axios.get("playlist.json")
+    //         .then(res=>{
+    //             this.setState({
+    //                 list: Object.values(res.data)
+    //             })
+    //         })
+    // }
 
-    componentDidMount(){
-        this.updateList()
-    }
+    // componentDidMount(){
+    //     this.updateList()
+    // }
 
-    componentDidUpdate(prevProps, prevState){
-        if(prevProps.listChangedFlag!==this.props.listChangedFlag){
-            this.updateList()
-        }
-    }
+    // componentDidUpdate(prevProps, prevState){
+    //     if(prevProps.listChangedFlag!==this.props.listChangedFlag){
+    //         this.updateList()
+    //     }
+    // }
 
     render() {
-        const {list} = this.state
+        const {list} = this.props
         const channelItem = list.map((item, index)=>{
             const title = item.title
             const icon = item.icon
             const getmsg = item.getmsg
             const pinned = item.pinned
             const id = item.id
-            const msg = [title, getmsg, icon, "library", pinned, id]
+            const msg = [title, getmsg, icon, "library", pinned, id, index]
             // console.log(msg)
             return(
                 // 
