@@ -24,13 +24,13 @@ export default class Library extends Component {
             const icon = item.icon
             const getmsg = item.getmsg
             const pinned = item.pinned
-            const msg = [title, getmsg, icon, "library", pinned]
+            const msg = [title, getmsg, icon, "library", pinned, index]
             // console.log(msg)
             return(
                 // 
             <div className='playlist-item' onClick={()=>this.props.changeGetmsgHolder(msg)}>
                 <figure>
-                    <img src={icon}/>
+                    <img alt='playlist-item-poster' src={icon}/>
                     <figcaption>{title}</figcaption>
                 </figure>
             </div>)

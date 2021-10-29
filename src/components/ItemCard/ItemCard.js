@@ -50,7 +50,7 @@ export default function ItemCard(props) {
   // const displayTitle = title.length < 57 ? title + holder +"...": title.slice(0,57) + "..."
   // displayTitle = displayTitle + "..."
   return (
-<Card className={classes.root} className="ItemCard">
+<Card className={classes.root} >
       <tag className="card-media">
       <CardMedia
         className={classes.media}

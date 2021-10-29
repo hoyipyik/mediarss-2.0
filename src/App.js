@@ -23,6 +23,13 @@ class App extends Component {
     playFlag: false,
   }
 
+  msgPinnedChanger = () =>{
+    let [title, getmsg, icon, type, pinned, index] = this.state.getmsgHolder
+    this.setState({
+      getmsgHolder: [title, getmsg, icon, type, !pinned, index],
+    })
+  }
+
   changeGetmsgHolder = (msg) =>{
      this.setState({
        getmsgHolder: msg,
@@ -127,6 +134,7 @@ class App extends Component {
           </div>
           <div className='item2'>
             <Contents 
+              msgPinnedChanger={this.msgPinnedChanger}
               changeGetmsgHolder={this.changeGetmsgHolder}
               videolinkHandler={this.videolinkHandler}
               getmsgHolder={getmsgHolder}

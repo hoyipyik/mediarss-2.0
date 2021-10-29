@@ -1,4 +1,4 @@
-import { LibraryAdd } from '@material-ui/icons'
+// import { LibraryAdd } from '@material-ui/icons'
 import React, { Component } from 'react'
 
 import ItemPage from '../../components/ItemPage/ItemPage'
@@ -33,6 +33,7 @@ export default class Contents extends Component {
                 <section className='main-contents'>
                     {channelItemPageFlag?
                     <tag><ItemPage 
+                            msgPinnedChanger={this.props.msgPinnedChanger}
                             getmsgHolder={getmsgHolder}
                             videolinkHandler={this.props.videolinkHandler}
                         /></tag>:

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomeIcon from '@material-ui/icons/Home';
+// import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';

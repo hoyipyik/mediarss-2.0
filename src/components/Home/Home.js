@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../axios'
 
 import "./Home.css"
-import poster from "../../poster.jpeg"
+// import poster from "../../poster.jpeg"
 
 export default class Home extends Component {
     state = {
@@ -25,13 +25,13 @@ export default class Home extends Component {
             const icon = item.icon
             const getmsg = item.getmsg
             const pinned = item.pinned
-            const msg = [title, getmsg, icon, "channels", pinned]
+            const msg = [title, getmsg, icon, "channel", pinned, index]
             // console.log(msg)
             return(
                 // 
-            <div className='channel-item' onClick={()=>this.props.changeGetmsgHolder(msg)}>
+            <div key={index} className='channel-item' onClick={()=>this.props.changeGetmsgHolder(msg)}>
                 <figure>
-                    <img src={icon}/>
+                    <img alt="channel-item-poster" src={icon}/>
                     <figcaption>{title}</figcaption>
                 </figure>
             </div>)
