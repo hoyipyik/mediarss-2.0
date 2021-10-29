@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -14,6 +14,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 // import poster from "../../poster.jpeg"
 import "./ItemCard.css"
+import axios from "../../axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,11 +42,23 @@ const useStyles = makeStyles((theme) => ({
 export default function ItemCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const {item} = props
+  const {getmsg, type, index, item} = props
   const image = item.videoimage 
   const link = item.videolink
   const title = item.videotitle
-  const like = item.like
+  const [like, setLike] = useState(item.like)
+
+  const likeHandler = () =>{
+    setLike(!like)
+  }
+
+  useEffect(() => {
+    const addr = "/"+type+getmsg+"/links/"+index+"/like.json"
+    axios.put(addr, like)
+      .then(res=>console.log(res))
+      .catch(err=>console.log(err))
+    console.log(like)
+  }, [like])
 
   // const displayTitle = title.length < 57 ? title + holder +"...": title.slice(0,57) + "..."
   // displayTitle = displayTitle + "..."
@@ -67,8 +80,8 @@ export default function ItemCard(props) {
       </tag>
       <tag className="card-action">
       <CardActions disableSpacing >
-        {props.type==="channels"?<tag>
-        <IconButton aria-label="add to favorites">
+        {props.type==="channel"?<tag>
+        <IconButton aria-label="add to favorites" onClick={likeHandler}>
           {like?<FavoriteIcon />:<FavoriteBorderIcon/>}
         </IconButton>
         <IconButton aria-label="share">

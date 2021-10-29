@@ -49,6 +49,7 @@ export default class ItemPage extends Component {
         const [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
         // console.log(title)
         let uploadItem = !pinned
+        // uploadItem = 1
         axios.put(type+getmsg+"/pinned.json", uploadItem)
             .then(res=>{
                 // console.log(res)
@@ -57,7 +58,7 @@ export default class ItemPage extends Component {
         let listFlag = type==="channel"?"/list":"/playlist"
         axios.put(listFlag+"/"+ index +"/pinned.json", uploadItem)
             .then(res=>{
-                console.log(res)
+                // console.log(res)
             })
             .catch(err=>{
                 console.log(err)
@@ -72,7 +73,7 @@ export default class ItemPage extends Component {
         const name = type.toUpperCase()
         const {links} = this.state
         const card = links.map((item, index) =>{
-            return <ItemCard item={item} videolinkHandler={this.props.videolinkHandler} type={type}/>
+            return <ItemCard  getmsg={getmsg} type={type} index={index} item={item} videolinkHandler={this.props.videolinkHandler} type={type}/>
         })
         
         return (
