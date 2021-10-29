@@ -99,7 +99,6 @@ class App extends Component {
   }
 
   homeHandler = () =>{
-    // const {channelItemPageFlag, homeFlag} = this.state
     this.setState({
       channelItemPageFlag: false,
       homeFlag: true,
