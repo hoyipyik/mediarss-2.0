@@ -1,0 +1,53 @@
+.Search{
+    height: 100%;
+    overflow: scroll; 
+    overflow-x: hidden;
+    /* background-color: rgb(155, 105, 39); */
+}
+
+/* .Home::-webkit-scrollbar {
+    display: none;
+  } */
+
+.Search .container{
+    margin: 1.5% 3%;
+    /* background-color: black; */
+}
+
+.Search h1{
+    font-size: 1.6em;
+    padding: 1% 0 1%;
+    /* background-color: aqua; */
+}
+
+.Search input{
+    width: 90%;
+    height: 35px;
+    margin: 1% 0;
+    padding: 1% 1%;
+    border-radius: 5px;
+    font-size: medium;
+    background-color: aliceblue;
+    border: #4244469d solid;
+}
+
+.Search input:focus{
+    outline: none;
+    border: #4244469d solid;
+    box-shadow: 1px 1px #585858a1;
+}
+
+.Search span{
+    position: relative;
+    left: 2%;
+    top: 8px;
+    height: 35px;
+    width: 5%;
+    zoom: 135%;
+    /* border-radius: 100%; */
+    /* border: solid black; */
+}
+
+.Search span:hover{
+    cursor: pointer;
+}
