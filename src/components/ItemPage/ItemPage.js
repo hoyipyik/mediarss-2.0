@@ -4,7 +4,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 
 import './ItemPage.css'
-import image from "../../poster.jpeg"
+// import image from "../../poster.jpeg"
 import ItemCard from "../ItemCard/ItemCard"
 
 import axios from "../../axios"
@@ -14,7 +14,7 @@ export default class ItemPage extends Component {
     state = {
         links: [],
     }
-
+1
     updateLinks = (getmsg, type) =>{
         type = "/" + type
         axios.get(type+getmsg+".json")
