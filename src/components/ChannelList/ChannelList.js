@@ -8,16 +8,23 @@ export default class ChannelList extends Component {
         list: [],
     }
 
-    componentDidMount(){
-        // console.log("[ChannelList.js]: Mount")
-        axios.get("/list.json")
+    updateList = () =>{
+        axios.get("list.json")
             .then(res=>{
-                const data = res.data
-                // console.log(res.data)
                 this.setState({
-                    list: data
+                    list: Object.values(res.data)
                 })
             })
+    }
+
+    componentDidMount(){
+        this.updateList()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.listChangedFlag!==this.props.listChangedFlag){
+            this.updateList()
+        }
     }
 
 
@@ -26,7 +33,7 @@ export default class ChannelList extends Component {
         const list = [...this.state.list]
         const listItem = list.map((item, index) =>{
             // console.log(item.title, "*********")
-            const msg = [item.title, item.getmsg, item.icon, "channel", item.pinned, index]
+            const msg = [item.title, item.getmsg, item.icon, "channel", item.pinned, item.id]
             return  <div 
                     key={index} 
                     className='channelList-item'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-
+import DeleteIcon from '@material-ui/icons/Delete';
 import './ItemPage.css'
 // import image from "../../poster.jpeg"
 import ItemCard from "../ItemCard/ItemCard"
@@ -65,6 +65,36 @@ export default class ItemPage extends Component {
             })
         // console.log(!pinned)
     }
+
+    pageRemover = () =>{
+        this.props.channelItemPageFlagHandler()
+        let [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
+        // let flag1 = false
+        // let flag2 = false
+        axios.delete("/"+type+getmsg+".json")
+            .then(res=>{
+                console.log(res)
+                // flag1 = true
+            })
+            .catch(err=>console.log(err))
+        const addr = type==="channel"?"/list/":"/playlist/"
+        axios.delete(addr+index+".json")
+            .then(res=>{
+                console.log(res)
+                this.props.listChangedFlagHandler()
+                
+                setTimeout(()=>{
+                    this.props.channelItemPageFlagHandler()
+                    console.log("listChangedFlag works", "#$%^&*(&^%$##$%^&*&^%$#$%^")
+                }, 1000)
+                
+                // flag2 = true
+            })
+            .catch(err=>console.log(err))
+        // if(flag1===true&&flag2===true){
+            
+        // }
+    }
     
     render() {
         let [title, getmsg, poster, type, pinned, index] = this.props.getmsgHolder
@@ -83,6 +113,7 @@ export default class ItemPage extends Component {
                         <img src={poster} className='channel-item-poster'/>
                         <h3>{name}</h3>
                         <h1 className='item-title'>{title}</h1>
+                        <tag onClick={this.pageRemover} className="delete"><DeleteIcon/></tag>
                         <span onClick={this.pinnedChangedHandler} id='pin-icon'>{pinned?<BookmarkIcon/>:<BookmarkBorderIcon />}</span>
                         {/* <p className='item-intro'>This is TEDx Channel</p> */}
                     </header>

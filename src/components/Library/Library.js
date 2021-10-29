@@ -8,13 +8,23 @@ export default class Library extends Component {
         list: [],
     }
 
-    componentDidMount(){
+    updateList = () =>{
         axios.get("playlist.json")
             .then(res=>{
                 this.setState({
-                    list: res.data
+                    list: Object.values(res.data)
                 })
             })
+    }
+
+    componentDidMount(){
+        this.updateList()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.listChangedFlag!==this.props.listChangedFlag){
+            this.updateList()
+        }
     }
 
     render() {
@@ -24,7 +34,8 @@ export default class Library extends Component {
             const icon = item.icon
             const getmsg = item.getmsg
             const pinned = item.pinned
-            const msg = [title, getmsg, icon, "library", pinned, index]
+            const id = item.id
+            const msg = [title, getmsg, icon, "library", pinned, id]
             // console.log(msg)
             return(
                 // 
@@ -35,8 +46,6 @@ export default class Library extends Component {
                 </figure>
             </div>)
         })
-
-            
  
         return (
             <div className='Library'>

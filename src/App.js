@@ -21,7 +21,15 @@ class App extends Component {
     getmsgHolder: [],
     videolink: '',
     playFlag: false,
+    listChangedFlag: false,
   }
+
+  listChangedFlagHandler= () =>{
+    const {listChangedFlag} = this.state
+    this.setState({
+        listChangedFlag: !listChangedFlag
+    })
+}
 
   msgPinnedChanger = () =>{
     let [title, getmsg, icon, type, pinned, index] = this.state.getmsgHolder
@@ -99,7 +107,7 @@ class App extends Component {
   }
 
   render() {
-    const {addPageFlag, getmsgHolder, playFlag, videolink,
+    const {addPageFlag, getmsgHolder, playFlag, videolink, listChangedFlag,
       channelItemPageFlag, searchFlag, 
       homeFlag, settingPageFlag} = this.state
     return (
@@ -124,7 +132,9 @@ class App extends Component {
 
         <section className='container'>
           <div className='item1'>
-            <SideBar 
+            <SideBar
+              listChangedFlag={listChangedFlag}
+              listChangedFlagHandler={this.listChangedFlagHandler}
               changeGetmsgHolder={this.changeGetmsgHolder}
               homeFlag={homeFlag}
               homeHandler={this.homeHandler}
@@ -133,7 +143,9 @@ class App extends Component {
               />
           </div>
           <div className='item2'>
-            <Contents 
+            <Contents
+              listChangedFlag={listChangedFlag}
+              listChangedFlagHandler={this.listChangedFlagHandler}
               msgPinnedChanger={this.msgPinnedChanger}
               changeGetmsgHolder={this.changeGetmsgHolder}
               videolinkHandler={this.videolinkHandler}

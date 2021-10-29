@@ -8,16 +8,23 @@ export default class Playlist extends Component {
         playlist: [],
     }
 
-    componentDidMount(){
-        // console.log("[ChannelList.js]: Mount")
-        axios.get("/playlist.json")
+    updateList = () =>{
+        axios.get("playlist.json")
             .then(res=>{
-                const data = res.data
-                // console.log(res.data)
                 this.setState({
-                    playlist: data
+                    playlist: Object.values(res.data)
                 })
             })
+    }
+
+    componentDidMount(){
+        this.updateList()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.listChangedFlag!==this.props.listChangedFlag){
+            this.updateList()
+        }
     }
 
 
@@ -26,7 +33,7 @@ export default class Playlist extends Component {
         const list = [...this.state.playlist]
         const listItem = list.map((item, index) =>{
             // console.log(item.title, "*********")
-            const msg = [item.title, item.getmsg, item.icon, "library",item.pinned, index ]
+            const msg = [item.title, item.getmsg, item.icon, "library",item.pinned, item.id ]
             return  <div 
                     key={index} 
                     className='playlist-item'

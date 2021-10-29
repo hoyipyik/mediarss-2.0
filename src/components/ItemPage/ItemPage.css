@@ -22,6 +22,16 @@
     /* background-color: aqua; */
 }
 
+.ChannelItemPage .delete{
+    position: relative;
+    left: -1%;
+    bottom: 0px;
+}
+
+.ChannelItemPage .delete:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 932px) {
     .ChannelItemPage h1{
         font-size: 3em;
@@ -69,7 +79,7 @@
 .ChannelItemPage header span{
     position: relative;
     bottom: 98px;
-    right: 54%;
+    right: 57%;
 }
 
 .ChannelItemPage header span:hover{

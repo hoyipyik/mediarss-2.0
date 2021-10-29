@@ -11,6 +11,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 // import poster from "../../poster.jpeg"
 import "./ItemCard.css"
@@ -87,7 +88,11 @@ export default function ItemCard(props) {
         <IconButton aria-label="share">
           <PlaylistAddIcon />
         </IconButton>
-        </tag>:null}
+        </tag>:
+        <IconButton aria-label="remove" >
+          <DeleteIcon/>
+        </IconButton>
+        }
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded

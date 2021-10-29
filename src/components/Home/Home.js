@@ -9,13 +9,25 @@ export default class Home extends Component {
         list: [],
     }
 
-    componentDidMount(){
+    updateList = () =>{
         axios.get("list.json")
             .then(res=>{
+                console.log(Object.values(res.data),"Mount Home data")
                 this.setState({
-                    list: res.data
+                    list: Object.values(res.data)
                 })
             })
+    }
+
+    componentDidMount(){
+        this.updateList()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.listChangedFlag!==this.props.listChangedFlag){
+            this.updateList()
+            // this.forceUpdate()
+        }
     }
 
     render() {
@@ -25,7 +37,8 @@ export default class Home extends Component {
             const icon = item.icon
             const getmsg = item.getmsg
             const pinned = item.pinned
-            const msg = [title, getmsg, icon, "channel", pinned, index]
+            const id = item.id
+            const msg = [title, getmsg, icon, "channel", pinned, id]
             // console.log(msg)
             return(
                 // 
@@ -37,7 +50,6 @@ export default class Home extends Component {
             </div>)
         })
 
-            
  
         return (
             <div className='Home'>
